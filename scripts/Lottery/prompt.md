@@ -1,4 +1,4 @@
-As a Senior Web3 Solidity Developer, please create a smart contract named "Lottery" for a lottery game that meets the following requirements:
+As a Senior Web3 Solidity Developer, please create a smart contract for a lottery game that meets the following requirements:
 
 - The smart contract must be named "Lottery" and include an owner who deploys it.
 - It should allow an unlimited number of players to participate in the lottery.
