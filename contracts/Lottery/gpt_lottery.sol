@@ -14,7 +14,10 @@ contract Lottery {
 
     // Modifier to restrict access to the owner
     modifier onlyOwner() {
-        require(msg.sender == owner, "Only the contract owner can call this function.");
+        require(
+            msg.sender == owner,
+            "Only the contract owner can call this function."
+        );
         _;
     }
 
@@ -32,21 +35,30 @@ contract Lottery {
     // Function for the owner to select a winner randomly
     function selectWinner() external onlyOwner {
         require(players.length > 0, "No players participated in the lottery.");
-        
+
         // Generate a random index based on block difficulty and current time
         uint256 randIndex = random() % players.length;
         address winner = players[randIndex];
-        
+
         // Transfer the contract balance to the winner
         payable(winner).transfer(address(this).balance);
-        
+
         // Reset the lottery for the next round
         delete players;
     }
 
     // Internal function to generate a pseudo-random number
     function random() internal view returns (uint256) {
-        return uint256(keccak256(abi.encodePacked(block.difficulty, block.timestamp, players.length)));
+        return
+            uint256(
+                keccak256(
+                    abi.encodePacked(
+                        block.difficulty,
+                        block.timestamp,
+                        players.length
+                    )
+                )
+            );
     }
 
     // Fallback function to receive ETH
