@@ -1,0 +1,3 @@
+- Create smart contract for simple bank.
+- The smart contract should be named "SimpleBank" and include an owner who deploys it.
+- Use Checks-Effects-Interactions (CEI) pattern for this smart contract.
