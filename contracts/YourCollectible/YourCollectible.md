@@ -1,7 +1,0 @@
-- The contract is a simple ERC721 contract that allows users to mint a token.
-- The name of the contract is `YourCollectible` and its symbol is `YCB`.
-- The contract follows the OpenZeppelin implementation of the ERC721 standard (ERC721 interface). Additionally, it uses the `Counters` library to manage token IDs, the `ERC721URIStorage` extension to store token URIs, the `ERC721Enumerable` extension to enable enumeration of tokens and the `Ownable` extension to restrict access to certain functions.
-- The mint function first increments the token ID and then mints a new token with the given URI.
-- The contract also override the `_baseURI` function to return the base URI for the token metadata, which is `https://ipfs.io/ipfs/`, the `_beforeTokenTransfer` function to check if the token is being transferred to a valid address, and the `_burn` function to handle token burning. 
-- Moreover, the contract has a `tokenURI` function to retrieve the URI of a specific token and `supportsInterface` function to check if the contract supports a given interface ID.
-- The contract should override `_increaseBalance` and `_update` function.
