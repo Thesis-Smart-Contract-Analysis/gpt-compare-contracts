@@ -15,7 +15,7 @@ def answer(query):
                 {"role": "user", "content": query},
             ],
             model=MODEL,
-            temperature=0.5,
+            temperature=0.7,
         )
         return response
     except Exception as e:
@@ -49,17 +49,32 @@ CONTRACTS: dict = {
         "name": "Dice Game",
         "description_path": "contracts/DiceGame/DiceGame.md"
     },
+    "YourCollectible": {
+        "name": "YourCollectible",
+        "description_path": "contracts/YourCollectible/YourCollectible.md"
+    },
+    "DecentralizedExchange": {
+        "name": "DecentralizedExchange",
+        "description_path": "contracts/DecentralizedExchange/DecentralizedExchange.md"
+    }
 }
 
 if __name__ == "__main__":
     # Loop over contracts
     for contract_id, contract in CONTRACTS.items():
         name, description_path = contract["name"], contract["description_path"]
+        directory = os.path.dirname(description_path)
+
+        # Check if the generated file exists, if it is, bail out
+        if os.path.exists(f"{directory}/{contract_id}.generated.sol"):
+            print(f"Skipping {name}")
+            continue
+
+        # Build query
         query = build_query_from_template(name, description_path)
         res = send_query(query)
 
         # Write output to file
-        directory = os.path.dirname(description_path)
         with open(f"{directory}/{contract_id}.json", "w") as f:
             json.dump(res, f, ensure_ascii=False, indent=2)
 

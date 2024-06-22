@@ -1,0 +1,39 @@
+- Allows users to seamlessly trade ERC20 BALLOONS ($BAL) with ETH in a decentralized manner according to a price formula.
+- Create another contract represented for BAL token that implements the ERC20 standard of OpenZeppelin. Name of the contract is Balloons, and the symbol is BAL. Also mint 1000 * 10**18 BAL tokens for the deployer.
+- Store the total liquidity and a mapping between the user's address and their liquidity in the contract. Also implement a function to check the liquidity of the user.
+- The constructor should take the address of the Balloons contract and set it as a state variable for initialization.
+- Has an initialize function that transfer specified (from the parameter) tokens  from the deployer to the contract. After that, set the total liquidity to current ETH balance of the contract and the deployer's liquidity to the total liquidity. This function should be payable and return the total liquidity.
+- Has a function to calculate the price of BAL in ETH.
+  - The price is calculated by the following formula: y = x * k / (x + a), where x is the input of a token (named it as X) and y is the output of another token (named it as Y). The k in the formula is the reserve of the token Y, and a is the reserve of the token X. This function will receive the amount of X as input, reserve of X, and reserve of Y. It will return the amount of Y that the user will receive.
+  - Also, keep 0.3% of X as a fee by multiplying the X with 997 and divide it by 1000.
+- Has a function to swap ETH for BAL: 
+  - The function is payable. It will send to the user the amount of BAL that they will receive exchange for the amount of ETH sent.
+  - The reserve of ETH will should be calculated by deducting the amount of ETH sent from the contract's balance. The reserve of BAL will be get from the token contract.
+  - After that, it should calculate the amount of BAL that the user will receive by calling the price calculation function.
+  - Transfer the amount of BAL through the token contract to the user.
+  - Emit an event that logs the transaction sender, a string to identify the action, the amount of ETH sent, and the amount of BAL received.
+  - Finally, return the amount of BAL that the user will receive.
+- Similar, contract also have a function to swap BAL and ETH:
+  - The function should take the amount of BAL as input and return the amount of ETH that the user will receive.
+  - The reserve of BAL will be get from the token contract. The reserve of ETH is current balance of the contract.
+  - Calculate the amount of ETH that the user will receive by calling the price calculation function.
+  - Transfer BAL from the user to the contract.
+  - Transfer ETH from the contract to the user.
+  - Emit an event that logs the transaction sender, a string to identify the action, the amount of ETH received and the amount of BAL sent.
+  - Finally, return the amount of ETH that the user will receive.
+- Contract should have a function to deposit:
+  - It should be payable.
+  - It will calculate the liquidity of the ETH that user sent by multiplying the amount of sent ETH with the total liquidity and divide it by the balance of the contract before the deposit (deducting the amount of ETH sent).
+  - Update liquidity of the user and the total liquidity.
+  - Calculate the amount of BAL that the user will deposit by multiplying the amount of sent ETH with the reserve of BAL and divide it by the balance of the contract before the deposit. Also, plus 1 to this amount.
+  - Emit an event that logs the transaction sender, the amount of liquidity, the amount of ETH sent, and the amount of BAL deposited.
+  - Transfer the amount of BAL from the user to the contract.
+  - Finally, return the amount of token that the user will deposit.
+- Contract should have a function to withdraw liquidity:
+  - The function should take the amount of liquidity that the user wants to withdraw as input.
+  - Calculate the amount of ETH that the user will receive by multiplying the amount of liquidity with the balance of the contract and divide it by the total liquidity.
+  - Calculate the amount of BAL that the user will receive by multiplying the amount of liquidity with the reserve of BAL and divide it by the total liquidity.
+  - Update the liquidity of the user and the total liquidity.
+  - Transfer the amount of ETH and BAL to the user.
+  - Emit an event that logs the transaction sender, the amount of liquidity, the amount of ETH received, and the amount of BAL received.
+  - Finally, return the amount of ETH and BAL that the user will receive.
