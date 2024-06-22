@@ -14,3 +14,4 @@ Beyond the expectation:
 Limitations:
 - Using floating compiler version.
 - Have one redundant constant.
+- Missing zero address check.
