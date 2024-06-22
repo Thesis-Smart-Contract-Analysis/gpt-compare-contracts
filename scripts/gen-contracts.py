@@ -49,14 +49,14 @@ CONTRACTS: dict = {
         "name": "Dice Game",
         "description_path": "contracts/DiceGame/DiceGame.md"
     },
-    "YourCollectible": {
-        "name": "YourCollectible",
-        "description_path": "contracts/YourCollectible/YourCollectible.md"
-    },
     "DecentralizedExchange": {
         "name": "DecentralizedExchange",
         "description_path": "contracts/DecentralizedExchange/DecentralizedExchange.md"
-    }
+    },
+    "TokenVendor": {
+        "name": "TokenVendor",
+        "description_path": "contracts/TokenVendor/TokenVendor.md"
+    },
 }
 
 if __name__ == "__main__":
