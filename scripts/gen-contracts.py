@@ -60,7 +60,11 @@ CONTRACTS: dict = {
     "Staker": {
         "name": "Staker",
         "description_path": "contracts/Staker/Staker.md"
-    }
+    },
+    "Proxy": {
+        "name": "Proxy",
+        "description_path": "contracts/Proxy/Proxy.md"
+    },
 }
 
 if __name__ == "__main__":
