@@ -57,6 +57,10 @@ CONTRACTS: dict = {
         "name": "TokenVendor",
         "description_path": "contracts/TokenVendor/TokenVendor.md"
     },
+    "Staker": {
+        "name": "Staker",
+        "description_path": "contracts/Staker/Staker.md"
+    }
 }
 
 if __name__ == "__main__":
