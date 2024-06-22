@@ -1,0 +1,6 @@
+- Dice Game is a contract that allows users to roll the dice to try and win the prize. If players roll either a 0, 1, 2, 3, 4 or 5 they will win the current prize amount. The initial prize is 10% of the contract's balance, which starts out at .05 Eth. The initial balance is zero and needs to be funded by the contract creator.
+- The smart contract should be called `DiceGame`.
+- Every time a player rolls the dice, they are required to send .002 ETH. 40 percent of this value is added to the current prize amount while the other 60 percent stays in the contract to fund future prizes. Once a prize is won, the new prize amount is set to 10% of the total balance of the DiceGame contract.
+- The roll will be calculated by taking keccak256 hash of the concatentation of previous blockhash and a nonce (initial value is 0) then modding the result by 16.
+- After sending prize to the winner, the contract should reset the prize by taking 10% of the current balance and setting it as the new prize amount.
+- The contract should have a receive function that allows initial funding of the contract. Also, the constructor is payable and could be used to fund the initial prize amount.
