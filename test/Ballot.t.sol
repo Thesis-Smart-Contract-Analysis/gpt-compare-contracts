@@ -14,4 +14,15 @@ contract BallotTest is Test {
         proposalNames[2] = "Proposal 3";
         ballot = new Ballot(proposalNames);
     }
+
+    function test_giveRightToVote(address voter) public {
+        ballot.giveRightToVote(voter);
+        (uint weight, , , ) = ballot.voters(voter);
+        assertEq(weight, 1);
+    }
+
+    function testFail_giveRightToVote(address voter) public {
+        vm.startPrank(address(0x1));
+        ballot.giveRightToVote(voter);
+    }
 }
