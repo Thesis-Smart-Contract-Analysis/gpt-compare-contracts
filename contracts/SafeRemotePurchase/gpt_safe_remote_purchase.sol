@@ -1,3 +1,5 @@
+// https://chatgpt.com/share/644d33ce-986b-4957-ab6d-d96056cfe875
+
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
